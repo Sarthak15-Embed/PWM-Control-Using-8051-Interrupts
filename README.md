@@ -191,7 +191,7 @@ This project uses **software PWM**, not hardware PWM, making it ideal for learni
 
 ## 👨‍💻 Author
 
-**Lovely Kumar**
+**Sarthak Pampattiwar**
 
 Embedded Systems Enthusiast  
 Skills: Embedded C | 8051 | LPC2148 | UART | SPI | I2C | PWM | ADC
