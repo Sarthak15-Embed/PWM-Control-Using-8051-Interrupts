@@ -170,7 +170,8 @@ Observe:
 👉 Add your Proteus connection image here:
 
 ```
-Images/connection_diagram.png
+<img width="1222" height="817" alt="Connection Image" src="https://github.com/user-attachments/assets/721f25ec-b799-4f12-b7c4-4f6ac0aaec6e" />
+
 ```
 
 ---
