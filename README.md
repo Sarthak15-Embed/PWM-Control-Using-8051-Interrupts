@@ -73,6 +73,138 @@ Duty cycle controls motor speed:
 | 75% | High Speed |
 | 100% | Full Speed |
 
+## 📐 8051 Timer Delay Calculations & PWM Waveforms
+
+### Timer Register Calculations (Mode 1 - 16 Bit Timer)
+
+The project uses an **11.0592 MHz crystal oscillator** and Timer0 operating in **Mode 1 (16-bit Timer Mode)**.
+
+#### Machine Cycle Calculation
+
+```text
+Crystal Frequency = 11.0592 MHz
+
+1 Machine Cycle = 12 / 11.0592 MHz
+                = 1.085 µs
+```
+
+#### Timer Count Formula
+
+```text
+Count = Target Delay / 1.085 µs
+
+Timer Value = 65536 - Count
+```
+
+### Timer Register Values
+
+| Target Delay | Decimal Count | Timer Value (Hex) | TH0 (High Byte) | TL0 (Low Byte) |
+| ------------ | ------------- | ----------------- | --------------- | -------------- |
+| 5 ms         | 4608          | 0xEE00            | 0xEE            | 0x00           |
+| 10 ms        | 9216          | 0xDC00            | 0xDC            | 0x00           |
+| 15 ms        | 13824         | 0xCA00            | 0xCA            | 0x00           |
+| 20 ms        | 18433         | 0xB7FF            | 0xB7            | 0xFF           |
+
+---
+
+## ⚡ PWM Duty Cycle Waveforms
+
+The PWM signal is generated using Timer0 delays. Different ON and OFF timings create different motor speeds.
+
+### 25% Duty Cycle
+
+```text
+5 ms ON + 15 ms OFF = 20 ms Period
+
+PWM:
+_____|‾‾‾‾|_______________
+
+Duty Cycle = 25%
+```
+
+| ON Time | OFF Time | Duty Cycle |
+| ------- | -------- | ---------- |
+| 5 ms    | 15 ms    | 25%        |
+
+---
+
+### 50% Duty Cycle
+
+```text
+10 ms ON + 10 ms OFF = 20 ms Period
+
+PWM:
+_____|‾‾‾‾‾‾‾‾|__________
+
+Duty Cycle = 50%
+```
+
+| ON Time | OFF Time | Duty Cycle |
+| ------- | -------- | ---------- |
+| 10 ms   | 10 ms    | 50%        |
+
+---
+
+### 75% Duty Cycle
+
+```text
+15 ms ON + 5 ms OFF = 20 ms Period
+
+PWM:
+_____|‾‾‾‾‾‾‾‾‾‾‾‾|____
+
+Duty Cycle = 75%
+```
+
+| ON Time | OFF Time | Duty Cycle |
+| ------- | -------- | ---------- |
+| 15 ms   | 5 ms     | 75%        |
+
+---
+
+### 100% Duty Cycle
+
+```text
+Continuous HIGH
+
+PWM:
+________________________________
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+Duty Cycle = 100%
+```
+
+| ON Time | OFF Time | Duty Cycle |
+| ------- | -------- | ---------- |
+| 20 ms   | 0 ms     | 100%       |
+
+---
+
+## 📷 Technical Infographic
+
+Add the infographic image generated for this project in the Images folder:
+
+```text
+Images/8051_Timer_PWM_Infographic.png
+```
+
+Display it in README using:
+
+```markdown
+## Technical Documentation Graphic
+
+![8051 Timer Delay and PWM Generation](Images/8051_Timer_PWM_Infographic.png)
+```
+
+This infographic summarizes:
+
+* 8051 Timer0 calculations
+* Machine cycle mathematics
+* TH0/TL0 register values
+* PWM duty cycle generation
+* Motor speed control logic
+
+
 ---
 
 ## ⚙️ Working Flow
