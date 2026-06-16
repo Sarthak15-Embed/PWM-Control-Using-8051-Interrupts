@@ -185,7 +185,7 @@ Duty Cycle = 100%
 Add the infographic image generated for this project in the Images folder:
 
 ```text
-Images/8051_Timer_PWM_Infographic.png
+Pwm_Intruppt/8051_Timer_PWM_Infographic.png
 ```
 
 Display it in README using:
@@ -193,7 +193,7 @@ Display it in README using:
 ```markdown
 ## Technical Documentation Graphic
 
-![8051 Timer Delay and PWM Generation](Images/8051_Timer_PWM_Infographic.png)
+![PWM-Control-Using-8051-Interrupts](Pwm_Intruppt/8051_Timer_PWM_Infographic.png)
 ```
 
 This infographic summarizes:
